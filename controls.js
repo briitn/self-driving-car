@@ -1,48 +1,52 @@
 class Controls{
-    constructor(){
-        this.forward=false
-        this.left=false
-        this.rigth=false
-        this.reverse=false
+    constructor(type){
+        this.forward=false;
+        this.left=false;
+        this.right=false;
+        this.reverse=false;
 
-        this.#addKeyboardListerners()
+        switch(type){
+            case "KEYS":
+                this.#addKeyboardListeners();
+                break;
+            case "DUMMY":
+                this.forward=true;
+                break;
+        }
     }
 
-    #addKeyboardListerners(){
-        document.onkeydown=(e)=>{
-            switch(e.key){
+    #addKeyboardListeners(){
+        document.onkeydown=(event)=>{
+            switch(event.key){
                 case "ArrowLeft":
-                    this.left=true
+                    this.left=true;
                     break;
-                 case "ArrowRight":
-                        this.right=true
-                        break;
-              case "ArrowUp":
-                            this.forward=true
-                            break;
-                            case "ArrowDown":
-                                this.reverse=true
-                                break;                  
-            }
-            
-        }
-        document.onkeyup=(e)=>{
-            switch(e.key){
-                case "ArrowLeft":
-                    this.left=false
+                case "ArrowRight":
+                    this.right=true;
                     break;
-                 case "ArrowRight":
-                        this.right=false
-                        break;
-              case "ArrowUp":
-                            this.forward=false
-                            break;
-                            case "ArrowDown":
-                                this.reverse=false
-                                break;                  
+                case "ArrowUp":
+                    this.forward=true;
+                    break;
+                case "ArrowDown":
+                    this.reverse=true;
+                    break;
             }
         }
-    
+        document.onkeyup=(event)=>{
+            switch(event.key){
+                case "ArrowLeft":
+                    this.left=false;
+                    break;
+                case "ArrowRight":
+                    this.right=false;
+                    break;
+                case "ArrowUp":
+                    this.forward=false;
+                    break;
+                case "ArrowDown":
+                    this.reverse=false;
+                    break;
+            }
+        }
+    }
 }
-}
-    
