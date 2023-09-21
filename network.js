@@ -12,7 +12,7 @@ class NeuralNetwork{
         let outputs=Level.feedForward(
             givenInputs,network.levels[0]);
         for(let i=1;i<network.levels.length;i++){
-            outpfuts=Level.feedForward(
+            outputs=Level.feedForward(
                 outputs,network.levels[i]);
         }
         return outputs;
